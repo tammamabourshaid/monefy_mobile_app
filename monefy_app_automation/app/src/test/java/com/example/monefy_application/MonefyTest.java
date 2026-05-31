@@ -28,35 +28,33 @@ public class MonefyTest {
         driver = new AndroidDriver<AndroidElement>(new URL("http://127.0.0.1:4723/wd/hub"),dc);
     }
 
-    @Test(testName = "Add Income")
+    @Test(testName = "Add Income", priority = 1)
     public void addIncome() {
         logger.info("Run Add Income Test Cases!");
         AddIncomeAndAssert.addIncome(driver);
-
     }
 
-    @Test(testName = "Add Bills")
+    @Test(testName = "Add Bills", priority = 2)
     public void addBills() {
         logger.info("Run Add Bills Expense Test Cases!");
         AddExpenseBillsAndAssert.addBillsToExpense(driver);
-       }
+    }
 
-    @Test(testName = "Add Foods")
+    @Test(testName = "Add Foods", priority = 3)
     public void addFoods() {
         logger.info("Run Add Foods Expense Test Cases!");
         AddExpenseFoodAndAssert.addFoodsToExpense(driver);
     }
 
-    @Test(testName = "Percentage")
+    @Test(testName = "Percentage", priority = 4)
     public void percentage() {
         logger.info("Run Percentage Test Cases!");
         PercentageOfFoodExpense.ExpensePercentage(driver);
-
     }
 
-    @Test(testName = "Delete Food Expense")
+    @Test(testName = "Delete Food Expense", priority = 5)
     public void expenseManagement() {
-      logger.info("Run Delete Food Expense Test Cases!");
+        logger.info("Run Delete Food Expense Test Cases!");
         DeleteFoodExpenseAndAssert.deleteExpense(driver);
     }
 

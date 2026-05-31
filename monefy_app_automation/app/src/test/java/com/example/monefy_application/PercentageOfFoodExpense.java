@@ -15,7 +15,7 @@ public class PercentageOfFoodExpense {
         MobileElement clickPercentage = (MobileElement) driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout/android.widget.FrameLayout/androidx.drawerlayout.widget.DrawerLayout/android.widget.LinearLayout/androidx.viewpager.widget.ViewPager/android.widget.LinearLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.TextView[12]");
         clickPercentage.click();
 
-        MobileElement percentageField = driver.findElementByXPath("findElementByXPath(\"/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout/android.widget.FrameLayout/androidx.drawerlayout.widget.DrawerLayout/android.widget.LinearLayout/androidx.viewpager.widget.ViewPager/android.widget.LinearLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.TextView[12]");
+        MobileElement percentageField = driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout/android.widget.FrameLayout/androidx.drawerlayout.widget.DrawerLayout/android.widget.LinearLayout/androidx.viewpager.widget.ViewPager/android.widget.LinearLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.TextView[12]");
 
         MobileElement list = (MobileElement) driver.findElementById("com.monefy.app.lite:id/rightLinesImageView");
         list.click();
@@ -29,11 +29,11 @@ public class PercentageOfFoodExpense {
         selectAmount.click();
         String amountText =selectAmount.getText();
 
-        Integer foodExpense = Integer.parseInt(foodPercentage);
-        Integer amountWithdrawn = Integer.parseInt(amountText);
+        double foodExpense = Double.parseDouble(foodPercentage);
+        double amountWithdrawn = Double.parseDouble(amountText);
 
-        Integer calculatePercentage = foodExpense/amountWithdrawn;
-        String percentage = calculatePercentage.toString().trim().substring(2);
+        int calculatePercentage = (int) Math.round((foodExpense / amountWithdrawn) * 100);
+        String percentage = calculatePercentage + "%";
 
         Assert.assertEquals(percentageField.getText(), percentage);
 
