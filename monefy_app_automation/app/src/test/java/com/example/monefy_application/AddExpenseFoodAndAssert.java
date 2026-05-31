@@ -37,7 +37,10 @@ public class AddExpenseFoodAndAssert {
         MobileElement layoutCategoryButton = driver.findElementById("com.monefy.app.lite:id/relativeLayoutChooseCategory");
         layoutCategoryButton.click();
 
-        MobileElement selectListedCategory = driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.RelativeLayout/android.widget.GridView/android.widget.FrameLayout[1]/android.widget.LinearLayout");
+        // TODO: verify correct Food category index against the live app grid.
+        // Bills uses FrameLayout[1]; Food must use a different index (e.g. FrameLayout[2]).
+        // Using the same index as Bills mis-categorises this expense under Bills.
+        MobileElement selectListedCategory = driver.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.RelativeLayout/android.widget.GridView/android.widget.FrameLayout[2]/android.widget.LinearLayout");
         selectListedCategory.click();
 
         Assert.assertEquals(driver.findElementById("com.monefy.app.lite:id/balance_amount").getText(),"Balance $20.00");
